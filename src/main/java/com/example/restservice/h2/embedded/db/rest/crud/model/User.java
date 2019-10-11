@@ -16,7 +16,7 @@ public class User {
     @Id
     @Column(name = "Id")
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private String Id;
+    private long Id;
 
     @UserNameValidation
     @NotNull(message = Utils.USERNAME_REQUIRED_EXCEPTION)
