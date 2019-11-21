@@ -3,6 +3,7 @@ package com.example.restservice.h2.embedded.db.rest.crud.service;
 
 
 import com.example.restservice.h2.embedded.db.rest.crud.exception.AlreadyExistException;
+import com.example.restservice.h2.embedded.db.rest.crud.exception.BadRequestException;
 import com.example.restservice.h2.embedded.db.rest.crud.exception.NotFoundException;
 import com.example.restservice.h2.embedded.db.rest.crud.model.User;
 
@@ -14,9 +15,9 @@ public interface UserService {
 
     public User getUser(String userId) throws NotFoundException;
 
-    public User updateUser(User user) throws NotFoundException;
+    public User updateUser(String username, User user) throws NotFoundException, BadRequestException;
 
-    public User deleteUser(String userName) throws NotFoundException;
+    public void deleteUser(String username) throws NotFoundException;
 
     public List<User> getAllUser();
 

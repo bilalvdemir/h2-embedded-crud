@@ -10,9 +10,9 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
-    public List<User> findAll();
+	List<User> findAll();
 
-    public User deleteByName(String userName);
+	User deleteByName(String userName);
 
-    public User findByUsername(String userName);
+	User findFirstByUsername(String userName);
 }

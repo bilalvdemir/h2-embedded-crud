@@ -86,6 +86,14 @@ public class User {
         this.lastname = lastname;
     }
 
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
+
     @Override
     public String toString() {
         return "User [Id=" + Id + ", username=" + username + ", email=" + email + ", password=" + password + ", name=" + name + ", lastname=" + lastname + "]";
