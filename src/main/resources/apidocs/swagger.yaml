@@ -81,11 +81,38 @@ paths:
             example: "User Not Found by Username: username."
       security:
         - Bearer: []
+  /user/{username}:
+    get:
+      tags:
+        - "User"
+      summary: "Get user by name"
+      description: "Kayıtlı kullanıcıyı username bilgisine göre çeker."
+      operationId: "getUser"
+      parameters:
+        - name: username
+          in: path
+          description: username
+          required: true
+          type: string
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Successful Operation"
+          schema:
+            $ref: "#/definitions/userDTO"
+        404:
+          description: "Not Found"
+          schema:
+            type: string
+            example: "User Not Found by Username: username."
+      security:
+        - Bearer: []
     put:
       tags:
         - "User"
       summary: "Put registered user"
-      description: "TKayıtlı bir kullanıcının bilgilerini güncelleyen API'dir."
+      description: "Kayıtlı bir kullanıcının bilgilerini güncelleyen API'dir."
       operationId: "putUser"
       parameters:
         - in: body
@@ -94,6 +121,11 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/userDTO'
+        - in: path
+          name: username
+          description: username
+          required: true
+          type: string
       produces:
         - "application/json"
       responses:
@@ -120,36 +152,14 @@ paths:
       parameters:
         - $ref: '#/parameters/Authorization'
         - $ref: '#/parameters/test'
-      responses:
-        204:
-          description: "successful operation"
-        404:
-          description: "Not Found"
-          schema:
-            type: string
-            example: "User Not Found by Username: username."
-      security:
-        - Bearer: []
-  /user/{username}:
-    get:
-      tags:
-        - "User"
-      summary: "Get user by name"
-      description: "Kayıtlı kullanıcıyı username bilgisine göre çeker."
-      operationId: "getUser"
-      parameters:
         - name: username
           in: path
           description: username
           required: true
           type: string
-      produces:
-        - "application/json"
       responses:
-        200:
-          description: "Successful Operation"
-          schema:
-            $ref: "#/definitions/userDTO"
+        204:
+          description: "successful operation"
         404:
           description: "Not Found"
           schema:
